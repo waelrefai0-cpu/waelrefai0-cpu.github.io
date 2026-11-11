@@ -43,7 +43,7 @@ const entranceGroups = [
   ['.site-header', 0], ['.greeting', 0.15], ['.intro h1', 0.3],
   ['.intro h2', 0.45], ['.hero-description', 0.6], ['.hero-actions', 0.75],
   ['.social-links', 0.9], ['.service-card', 0.65], ['.credentials', 1.05],
-  ['.hero-foot', 1.45],
+  ['.hero-foot', 1.45], ['.hire-bunny', 1.55],
 ];
 entranceGroups.forEach(([selector, delay]) => {
   document.querySelectorAll(selector).forEach((element, index) => {
@@ -112,3 +112,9 @@ document.addEventListener('visibilitychange', () => {
 if (!motion.matches) playVideo();
 else { revealWithoutPlayback(); syncVideoControl(); }
 document.querySelector('#year').textContent = new Date().getFullYear();
+const hireBunny = document.querySelector('.hire-bunny');
+try { hireBunny.hidden = sessionStorage.getItem('hireBunnyDismissed') === '1'; } catch { /* Storage may be unavailable in private browsing. */ }
+document.querySelector('.bunny-dismiss').addEventListener('click', () => {
+  hireBunny.hidden = true;
+  try { sessionStorage.setItem('hireBunnyDismissed', '1'); } catch { /* Dismissal still works without storage. */ }
+});
