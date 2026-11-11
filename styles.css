@@ -1,10 +1,11 @@
+@font-face { font-family: Manrope; src: url('assets/manrope.ttf') format('truetype'); font-style: normal; font-weight: 200 800; font-display: swap; }
 :root {
-  --ink: #122238; --blue: #075a9e; --deep: #003b70;
-  --muted: #475b73; --paper: #f7f9fc; --line: #dae2ee; --page: 1300px;
+  --ink: #102c4a; --blue: #0062d4; --deep: #073b70;
+  --muted: #4f617a; --paper: #f8fbff; --line: #dfe9f5; --page: 1660px;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scrollbar-gutter: stable; scrollbar-color: #a4b7cc var(--paper); scrollbar-width: thin; }
-body { margin: 0; color: var(--ink); background: #fff; font-family: "Segoe UI", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0; color: var(--ink); background: #fff; font-family: Manrope, "Segoe UI", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
 a { color: inherit; text-decoration: none; text-underline-offset: 5px; }
 a, button { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
 button { font: inherit; cursor: pointer; }

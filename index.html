@@ -8,18 +8,49 @@
   <title>Wael Refai — QA Engineer & Software Developer</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preload" as="image" href="assets/hello.png">
-  <script>document.documentElement.classList.add('js-loading');</script>
-  <link rel="stylesheet" href="styles.css?v=intro-1">
-  <link rel="stylesheet" href="hero.css?v=intro-1">
-  <script src="app.js?v=intro-1" defer onerror="document.documentElement.classList.remove('js-loading')"></script>
+  <link rel="preload" as="image" href="assets/intro-poster.jpg">
+  <script>
+    (() => {
+      const root = document.documentElement;
+      root.classList.add('intro-pending');
+      root.dataset.bootAt = String(performance.now());
+      try { history.scrollRestoration = 'manual'; } catch {}
+      let interacted = false;
+      const freshHero = !location.hash || location.hash === '#accueil';
+      const resetTop = () => {
+        if (freshHero && !interacted) {
+          try { window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); }
+          catch { window.scrollTo(0, 0); }
+        }
+      };
+      for (const type of ['wheel', 'touchstart', 'pointerdown', 'keydown']) {
+        window.addEventListener(type, () => { interacted = true; }, { once: true, passive: true });
+      }
+      resetTop();
+      document.addEventListener('DOMContentLoaded', resetTop, { once: true });
+      window.addEventListener('pageshow', event => { if (!event.persisted) resetTop(); }, { once: true });
+      window.__startupSafety = window.setTimeout(() => {
+        root.classList.remove('intro-pending');
+        root.classList.add('hello-done');
+        root.dataset.startupResult = 'poster';
+        root.dataset.fallbackReason = 'startup-script-timeout';
+        root.dataset.contentReadyMs = String(Math.round(performance.now()));
+      }, 4500);
+      window.__helloSafety = window.setTimeout(() => {
+        root.classList.add('hello-done');
+        root.dataset.helloHideMs = String(Math.round(performance.now()));
+      }, 1100);
+    })();
+  </script>
+  <link rel="stylesheet" href="styles.css?v=reference-2">
+  <link rel="stylesheet" href="hero.css?v=reference-2">
+  <script src="app.js?v=reference-2" defer></script>
+  <script src="startup.js?v=reference-2" defer></script>
 </head>
 <body>
-  <div class="intro-screen" id="intro-screen" role="status" aria-label="Bienvenue sur le portfolio">
-    <div class="hello-word"><img src="assets/hello.png" width="447" height="447" alt="hello" lang="en" fetchpriority="high"></div>
-    <button id="intro-enter" class="intro-enter" type="button" hidden>Entrer</button>
-  </div>
   <a class="skip-link" href="#contenu">Aller au contenu</a>
-  <header class="site-header">
+  <header class="site-header" data-enter="0">
+    <a class="brand" href="#accueil" aria-label="Wael Refai, accueil"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 6-6 6 6 6m10-12 6 6-6 6M14 3l-4 18"/></svg><span>Wael Refai</span></a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="navigation" aria-label="Ouvrir le menu"><span></span><span></span></button>
     <nav id="navigation" aria-label="Navigation principale">
       <a class="active" href="#accueil" aria-current="location">Accueil</a>
@@ -28,26 +59,35 @@
       <a href="#experience">Expérience</a>
       <a href="#contact">Contact</a>
     </nav>
+    <a class="header-contact button" href="mailto:refaiwael@gmail.com"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="assets/contact-icons.svg?v=reference-2#send"/></svg>Me contacter</a>
   </header>
   <main id="contenu">
     <section class="hero" id="accueil" aria-labelledby="hero-title">
-      <div class="hero-media"><video id="background-video" muted playsinline preload="none" poster="assets/intro-poster.jpg" data-video-src="assets/intro-portfolio.mp4" aria-hidden="true"></video></div>
+      <div class="hero-media"><video id="background-video" muted playsinline preload="auto" poster="assets/intro-poster.jpg" aria-hidden="true"><source src="assets/intro-fast.mp4" type="video/mp4"></video></div>
       <div class="hero-shade"></div>
+      <div class="hero-art" aria-hidden="true">
+        <svg class="ribbon-right" viewBox="0 0 700 600" preserveAspectRatio="none"><defs><linearGradient id="ribbon-blue" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#cde2ff" stop-opacity=".05"/><stop offset="1" stop-color="#5c9ffa" stop-opacity=".55"/></linearGradient></defs><path d="M0 480C250 400 340 85 700 60V200C390 210 280 455 0 530Z" fill="url(#ribbon-blue)"/><path d="M0 530C260 420 420 225 700 200V275C410 300 280 500 0 565Z" fill="#d5e6ff" opacity=".55"/></svg>
+        <svg class="ribbon-left" viewBox="0 0 600 180" preserveAspectRatio="none"><path d="M0 170C210-15 360 10 600 80V130C340 50 200 90 0 180Z" fill="#bddaff" opacity=".55"/><path d="M0 170C230 65 350 105 600 135V175C310 135 230 140 0 180Z" fill="#dfecff" opacity=".7"/></svg>
+      </div>
+      <div class="intro-screen" id="intro-screen" role="status" aria-label="Bonjour, bienvenue sur le portfolio">
+        <div class="hello-word"><svg viewBox="0 0 447 447" role="img" aria-label="hello"><defs><filter id="hello-transparent" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -.333333 -.333333 -.333333 0 1"/></filter></defs><image href="assets/hello.png" width="447" height="447" filter="url(#hello-transparent)"/></svg></div>
+      </div>
       <div class="hero-content page-width">
         <div class="intro">
-          <h1 id="hero-title">Wael <span>Refai</span></h1>
-          <h2>QA Engineer <span>& Software Developer</span></h2>
-          <p class="hero-description">Je développe des applications fiables et veille à leur qualité, de la conception à la livraison.</p>
-          <div class="hero-actions">
-            <a class="button primary" href="mailto:refaiwael@gmail.com">Discutons de votre projet</a>
-            <a class="cv-link" href="assets/WaelRefaiCV.pdf" download="WaelRefaiCV.pdf">Télécharger mon CV</a>
+          <p class="availability" data-enter=".05"><span aria-hidden="true"></span>Disponible pour de nouveaux projets</p>
+          <h1 id="hero-title" data-enter=".15">Wael <span>Refai<svg viewBox="0 0 200 16" aria-hidden="true"><path d="M4 12Q99-2 196 10"/></svg></span></h1>
+          <h2 data-enter=".2">QA Engineer <span>& Software Developer</span></h2>
+          <p class="hero-description" data-enter=".3">Je développe des applications fiables et veille à leur qualité, de la conception à la livraison.</p>
+          <div class="hero-actions" data-enter=".4">
+            <a class="button primary" href="mailto:refaiwael@gmail.com"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="assets/contact-icons.svg?v=reference-2#rocket"/></svg>Discutons de votre projet</a>
+            <a class="button cv-link" href="assets/WaelRefaiCV.pdf" download="WaelRefaiCV.pdf"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="assets/contact-icons.svg?v=reference-2#download"/></svg>Télécharger mon CV</a>
           </div>
         </div>
       </div>
-      <nav class="hero-socials" aria-label="Me contacter">
-        <a href="https://www.linkedin.com/in/refaiwael/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (nouvel onglet)" title="LinkedIn"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="assets/contact-icons.svg#linkedin"/></svg></a>
-        <a href="mailto:refaiwael@gmail.com" aria-label="M’envoyer un email" title="Email"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="assets/contact-icons.svg#email"/></svg></a>
-        <a href="https://wa.me/21653645173" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp (nouvel onglet)" title="WhatsApp"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="assets/contact-icons.svg#whatsapp"/></svg></a>
+      <nav class="hero-socials" aria-label="Me contacter" data-enter=".4">
+        <a href="https://www.linkedin.com/in/refaiwael/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (nouvel onglet)" title="LinkedIn"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="assets/contact-icons.svg?v=reference-2#linkedin"/></svg></a>
+        <a href="mailto:refaiwael@gmail.com" aria-label="M’envoyer un email" title="Email"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="assets/contact-icons.svg?v=reference-2#email"/></svg></a>
+        <a href="https://wa.me/21653645173" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp (nouvel onglet)" title="WhatsApp"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="assets/contact-icons.svg?v=reference-2#whatsapp"/></svg></a>
       </nav>
     </section>
     <section class="about section page-width" id="a-propos" aria-labelledby="about-title">
