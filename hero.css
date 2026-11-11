@@ -24,10 +24,10 @@
 .hero-socials a { width:58px; height:58px; display:grid; place-items:center; background:#ffffffde; border-radius:15px; color:var(--deep); box-shadow:0 8px 22px #133f7012; transition:transform 180ms ease,background 180ms ease; }
 .hero-socials svg { width:25px; height:25px; fill:currentColor; stroke:none; }
 .hero-socials a:hover { background:#fff; transform:translateY(-3px); }
-.hire-bunny { position:absolute; z-index:3; left:5%; bottom:14px; display:flex; align-items:center; gap:0; width:fit-content; }
+.hire-bunny { position:fixed; z-index:30; pointer-events:none; left:5%; bottom:14px; display:flex; align-items:center; gap:0; width:fit-content; }
 .hire-bunny[hidden] { display:none !important; }
 .hire-bunny>img { width:140px; height:auto; display:block; }
-.bunny-note { position:relative; margin-left:-9px; margin-top:-32px; padding:13px 28px 13px 16px; background:#fff; border:1px solid var(--line); border-radius:19px 19px 19px 5px; box-shadow:0 5px 18px #173f6c0c; transform:rotate(-3deg); }
+.bunny-note { pointer-events:auto; position:relative; margin-left:-9px; margin-top:-32px; padding:13px 28px 13px 16px; background:#fff; border:1px solid var(--line); border-radius:19px 19px 19px 5px; box-shadow:0 5px 18px #173f6c0c; transform:rotate(-3deg); }
 .bunny-note::before { content:""; position:absolute; left:-6px; bottom:13px; width:10px; height:10px; background:#fff; border-left:1px solid var(--line); border-bottom:1px solid var(--line); transform:rotate(45deg); }
 .bunny-note>a { display:block; color:var(--deep); font-size:13px; font-weight:750; white-space:nowrap; text-decoration:none; }
 .bunny-note>a span { color:#c05f7c; margin-left:3px; font-size:19px; vertical-align:-1px; }
@@ -110,8 +110,8 @@
   .hero-actions .button { font-size:13px; min-height:46px; padding:11px 16px; }
   .hero-socials { position:static; order:2; width:88%; margin-inline:auto; padding-bottom:26px; gap:12px; }
   .hero-socials a { width:46px; height:46px; }
-  .hire-bunny { position:relative; left:auto; bottom:auto; order:3; width:88%; margin:0 auto 20px; }
-  .hire-bunny>img { width:120px; }
+  .hire-bunny { left:max(8px,env(safe-area-inset-left)); bottom:max(10px,env(safe-area-inset-bottom)); width:fit-content; margin:0; }
+  .hire-bunny>img { width:96px; }
   .bunny-note { margin-top:-18px; }
   .ribbon-right { display:none; }
   .ribbon-left { bottom:2%; width:65%; height:15%; opacity:.45; }
