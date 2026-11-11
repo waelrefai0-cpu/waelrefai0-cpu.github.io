@@ -8,7 +8,6 @@
   <title>Wael Refai — QA Engineer & Software Developer</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preload" as="image" href="assets/hello.png">
-  <link rel="preload" as="image" href="assets/intro-poster.jpg">
   <style>
     .intro-screen { display:none; position:fixed; inset:0; z-index:100; background:#fff; }
     .hello-active .intro-screen { display:grid; place-items:center; }
@@ -49,7 +48,7 @@
     })();
   </script>
   <link rel="stylesheet" href="styles.css?v=reference-2">
-  <link rel="stylesheet" href="hero.css?v=mobile-cinema-1">
+  <link rel="stylesheet" href="hero.css?v=no-video-cover-1">
   <script src="app.js?v=bunny-1" defer></script>
   <script src="startup.js?v=hello-then-video-1" defer></script>
 </head>
@@ -73,7 +72,7 @@
   </header>
   <main id="contenu">
     <section class="hero" id="accueil" aria-labelledby="hero-title">
-      <div class="hero-media"><video id="background-video" muted playsinline preload="auto" poster="assets/intro-poster.jpg" aria-hidden="true"><source src="assets/intro-fast.mp4" type="video/mp4"></video></div>
+      <div class="hero-media"><video id="background-video" muted playsinline preload="auto" aria-hidden="true"><source src="assets/intro-fast.mp4" type="video/mp4"></video></div>
       <div class="hero-shade"></div>
       <div class="hero-art" aria-hidden="true">
         <svg class="ribbon-right" viewBox="0 0 700 600" preserveAspectRatio="none"><defs><linearGradient id="ribbon-blue" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#cde2ff" stop-opacity=".05"/><stop offset="1" stop-color="#5c9ffa" stop-opacity=".55"/></linearGradient></defs><path d="M0 480C250 400 340 85 700 60V200C390 210 280 455 0 530Z" fill="url(#ribbon-blue)"/><path d="M0 530C260 420 420 225 700 200V275C410 300 280 500 0 565Z" fill="#d5e6ff" opacity=".55"/></svg>

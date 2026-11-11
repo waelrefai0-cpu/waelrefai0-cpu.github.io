@@ -1,6 +1,8 @@
 .hero { position:relative; height:100svh; min-height:560px; overflow:hidden; isolation:isolate; background:var(--paper); }
 .hero-media,.hero-shade { position:absolute; inset:0; z-index:-2; }
-.hero-media { background:var(--paper) url('assets/intro-poster.jpg') center/cover no-repeat; }
+.hero-media { background:var(--paper); background-size:cover; background-position:center; background-repeat:no-repeat; }
+[data-startup-result="poster"] .hero-media { background-image:url('assets/intro-poster.jpg'); }
+[data-startup-result="poster"] .hero-media video { visibility:hidden; }
 .hero-media video { display:block; width:100%; height:100%; object-fit:cover; object-position:center; }
 .hero-media video.poster-only { visibility:hidden; }
 .hero-shade { z-index:-1; background:linear-gradient(90deg,#f8fbffd9 0%,#f8fbff55 30%,transparent 48%),linear-gradient(0deg,#fff5,transparent 18%); }
