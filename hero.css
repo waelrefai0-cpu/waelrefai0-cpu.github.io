@@ -73,6 +73,10 @@
   .hire-bunny { bottom:8px; }
   .bunny-note { padding-block:9px; }
 }
+@media (min-width:1181px) {
+  .site-header { justify-content:center; }
+  .header-contact { position:absolute; right:6%; }
+}
 @media (max-width:1180px) {
   .site-header { height:80px; justify-content:flex-end; }
   .header-contact { display:none; }
