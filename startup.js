@@ -8,6 +8,10 @@
   }
   const hello = document.querySelector('#intro-screen');
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const playbackOffset = window.matchMedia('(max-width: 760px)').matches ? 1 : 0;
+  const contentStartTime = playbackOffset + 3;
+  root.dataset.videoOffset = String(playbackOffset);
+  let offsetPrepared = playbackOffset === 0;
   const bootAt = Number(root.dataset.bootAt) || 0;
   window.clearTimeout(window.__startupSafety);
   let started = false;
@@ -68,6 +72,13 @@
     if (ready) root.dataset.startupResult = 'poster';
     else showContent('poster');
   }
+  function prepareStart() {
+    if (offsetPrepared) return true;
+    if (video.readyState < 1) return false;
+    video.currentTime = playbackOffset;
+    offsetPrepared = true;
+    return true;
+  }
   function onPlaying() {
     if (!greetingFinished || posterOnly || ended) { video.pause(); return; }
     if (started) return;
@@ -79,10 +90,11 @@
     if (typeof video.requestVideoFrameCallback === 'function') {
       video.requestVideoFrameCallback(() => stamp('firstFrameMs'));
     }
-    if (video.currentTime >= 3) showContent();
+    if (video.currentTime >= contentStartTime) showContent();
   }
   async function play() {
     if (!greetingFinished || pendingPlay || posterOnly || ended || motion.matches || document.hidden) return;
+    if (!prepareStart()) return;
     pendingPlay = true;
     playAttempts++;
     video.muted = true;
@@ -100,10 +112,16 @@
   const elapsed = performance.now() - bootAt;
   const startDeadline = window.setTimeout(() => usePoster('video-timeout'), Math.max(0, 3200 - elapsed));
   const contentDeadline = window.setTimeout(() => usePoster('playback-stalled'), Math.max(0, 6500 - elapsed));
+  video.addEventListener('loadedmetadata', () => {
+    if (!posterOnly && !motion.matches) {
+      prepareStart();
+      if (greetingFinished) play();
+    }
+  });
   video.addEventListener('playing', onPlaying);
   video.addEventListener('canplay', () => { if (!started) play(); });
   video.addEventListener('timeupdate', () => {
-    if (started && !posterOnly && video.currentTime >= 3) showContent();
+    if (started && !posterOnly && video.currentTime >= contentStartTime) showContent();
   });
   video.addEventListener('ended', () => {
     ended = true;
@@ -136,6 +154,7 @@
   } else if (video.error) usePoster('video-error');
   else {
     video.pause();
+    prepareStart();
     hideHello();
   }
 })();
