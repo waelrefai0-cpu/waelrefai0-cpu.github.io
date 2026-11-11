@@ -37,3 +37,9 @@ const observer = new IntersectionObserver(entries => {
 }, { rootMargin: '-10% 0px -55% 0px', threshold: 0 });
 document.querySelectorAll('main > section[id]').forEach(section => observer.observe(section));
 document.querySelector('#year').textContent = new Date().getFullYear();
+
+const hireBunny = document.querySelector('.hire-bunny');
+const bunnyDismiss = document.querySelector('.bunny-dismiss');
+bunnyDismiss.addEventListener('click', () => {
+  hireBunny.hidden = true;
+});
