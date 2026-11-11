@@ -15,6 +15,7 @@
   let ready = false;
   let posterOnly = false;
   let helloHidden = false;
+  let greetingFinished = false;
   let pendingPlay = false;
   let playAttempts = 0;
   let retryTimer;
@@ -37,7 +38,12 @@
     root.classList.remove('hello-active');
     if (!root.dataset.helloHideMs) stamp('helloHideMs');
     window.clearTimeout(window.__helloSafety);
-    window.setTimeout(() => { hello.hidden = true; }, motion.matches ? 0 : 560);
+    window.setTimeout(() => {
+      hello.hidden = true;
+      greetingFinished = true;
+      stamp('helloEndMs');
+      play();
+    }, motion.matches ? 0 : 560);
   }
   function showContent(reason = 'video') {
     if (ready) return;
@@ -63,7 +69,7 @@
     else showContent('poster');
   }
   function onPlaying() {
-    if (posterOnly || ended) { video.pause(); return; }
+    if (!greetingFinished || posterOnly || ended) { video.pause(); return; }
     if (started) return;
     started = true;
     playAttempts = 0;
@@ -76,7 +82,7 @@
     if (video.currentTime >= 3) showContent();
   }
   async function play() {
-    if (pendingPlay || posterOnly || ended || motion.matches || document.hidden) return;
+    if (!greetingFinished || pendingPlay || posterOnly || ended || motion.matches || document.hidden) return;
     pendingPlay = true;
     playAttempts++;
     video.muted = true;
@@ -128,6 +134,8 @@
     video.preload = 'metadata';
     window.setTimeout(() => usePoster('reduced-motion'), 250);
   } else if (video.error) usePoster('video-error');
-  else if (!video.paused && video.readyState >= 2) onPlaying();
-  else play();
+  else {
+    video.pause();
+    hideHello();
+  }
 })();
