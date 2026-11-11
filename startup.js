@@ -18,6 +18,7 @@
   let pendingPlay = false;
   let playAttempts = 0;
   let retryTimer;
+  let helloTimer;
   const stamp = key => { root.dataset[key] = String(Math.round(performance.now())); };
   document.querySelectorAll('[data-enter]').forEach(element => {
     element.style.setProperty('--enter-delay', `${element.dataset.enter || 0}s`);
@@ -25,11 +26,17 @@
   });
   function hideHello() {
     if (helloHidden) return;
+    const remaining = motion.matches ? 0 : 900 - (performance.now() - bootAt);
+    if (remaining > 0) {
+      window.clearTimeout(helloTimer);
+      helloTimer = window.setTimeout(hideHello, remaining);
+      return;
+    }
     helloHidden = true;
     root.classList.add('hello-done');
     if (!root.dataset.helloHideMs) stamp('helloHideMs');
     window.clearTimeout(window.__helloSafety);
-    window.setTimeout(() => { hello.hidden = true; }, motion.matches ? 0 : 200);
+    window.setTimeout(() => { hello.hidden = true; }, motion.matches ? 0 : 560);
   }
   function showContent(reason = 'video') {
     if (ready) return;
@@ -61,7 +68,7 @@
     playAttempts = 0;
     stamp('videoStartMs');
     window.clearTimeout(startDeadline);
-    window.setTimeout(hideHello, Math.max(0, 650 - (performance.now() - bootAt)));
+    hideHello();
     if (typeof video.requestVideoFrameCallback === 'function') {
       video.requestVideoFrameCallback(() => stamp('firstFrameMs'));
     }
