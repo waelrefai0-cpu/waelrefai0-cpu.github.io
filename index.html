@@ -11,12 +11,12 @@
   <link rel="preload" as="image" href="assets/intro-poster.jpg">
   <style>
     .intro-screen { display:none; position:fixed; inset:0; z-index:100; background:#fff; }
-    .intro-pending .intro-screen { display:grid; place-items:center; }
+    .hello-active .intro-screen { display:grid; place-items:center; }
   </style>
   <script>
     (() => {
       const root = document.documentElement;
-      root.classList.add('intro-pending');
+      root.classList.add('intro-pending', 'hello-active');
       root.dataset.bootAt = String(performance.now());
       try { history.scrollRestoration = 'manual'; } catch {}
       let interacted = false;
@@ -36,20 +36,22 @@
       window.__startupSafety = window.setTimeout(() => {
         root.classList.remove('intro-pending');
         root.classList.add('hello-done');
+        root.classList.remove('hello-active');
         root.dataset.startupResult = 'poster';
         root.dataset.fallbackReason = 'startup-script-timeout';
         root.dataset.contentReadyMs = String(Math.round(performance.now()));
       }, 4500);
       window.__helloSafety = window.setTimeout(() => {
         root.classList.add('hello-done');
+        root.classList.remove('hello-active');
         root.dataset.helloHideMs = String(Math.round(performance.now()));
       }, 1800);
     })();
   </script>
   <link rel="stylesheet" href="styles.css?v=reference-2">
-  <link rel="stylesheet" href="hero.css?v=hello-screen-1">
+  <link rel="stylesheet" href="hero.css?v=hello-screen-2">
   <script src="app.js?v=reference-2" defer></script>
-  <script src="startup.js?v=hello-screen-1" defer></script>
+  <script src="startup.js?v=hello-screen-2" defer></script>
 </head>
 <body>
       <div class="intro-screen" id="intro-screen" role="status" aria-label="Bonjour, bienvenue sur le portfolio">

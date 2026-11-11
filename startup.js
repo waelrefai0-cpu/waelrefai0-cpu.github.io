@@ -34,6 +34,7 @@
     }
     helloHidden = true;
     root.classList.add('hello-done');
+    root.classList.remove('hello-active');
     if (!root.dataset.helloHideMs) stamp('helloHideMs');
     window.clearTimeout(window.__helloSafety);
     window.setTimeout(() => { hello.hidden = true; }, motion.matches ? 0 : 560);
