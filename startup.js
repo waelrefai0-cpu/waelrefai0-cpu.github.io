@@ -8,6 +8,7 @@
   }
   const hello = document.querySelector('#intro-screen');
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const compact = window.matchMedia('(max-width: 760px)');
   const bootAt = Number(root.dataset.bootAt) || 0;
   window.clearTimeout(window.__startupSafety);
   let started = false;
@@ -38,6 +39,7 @@
     if (!root.dataset.helloHideMs) stamp('helloHideMs');
     window.clearTimeout(window.__helloSafety);
     window.setTimeout(() => { hello.hidden = true; }, motion.matches ? 0 : 560);
+    if (compact.matches && started && !ready) showContent();
   }
   function showContent(reason = 'video') {
     if (ready) return;
@@ -48,6 +50,7 @@
     stamp('contentReadyMs');
     window.clearTimeout(startDeadline);
     window.clearTimeout(contentDeadline);
+    window.clearTimeout(compactDeadline);
     window.clearTimeout(retryTimer);
     hideHello();
   }
@@ -94,6 +97,11 @@
   const elapsed = performance.now() - bootAt;
   const startDeadline = window.setTimeout(() => usePoster('video-timeout'), Math.max(0, 3200 - elapsed));
   const contentDeadline = window.setTimeout(() => usePoster('playback-stalled'), Math.max(0, 6500 - elapsed));
+  const compactDeadline = compact.matches ? window.setTimeout(() => {
+    if (!compact.matches) return;
+    if (started) showContent();
+    else usePoster('mobile-video-timeout');
+  }, Math.max(0, 1800 - elapsed)) : undefined;
   video.addEventListener('playing', onPlaying);
   video.addEventListener('canplay', () => { if (!started) play(); });
   video.addEventListener('timeupdate', () => {
