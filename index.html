@@ -7,15 +7,17 @@
   <meta name="description" content="Wael Refai, QA Engineer et Software Developer à Sfax, Tunisie. Découvrez son parcours et contactez-le pour votre prochain projet.">
   <title>Wael Refai — QA Engineer & Software Developer</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="stylesheet" href="styles.css?v=clean-1">
-  <link rel="stylesheet" href="hero.css?v=clean-1">
-  <script src="app.js?v=clean-1" defer></script>
+  <link rel="preload" as="image" href="assets/hello.png">
+  <script>document.documentElement.classList.add('js-loading');</script>
+  <link rel="stylesheet" href="styles.css?v=intro-1">
+  <link rel="stylesheet" href="hero.css?v=intro-1">
+  <script src="app.js?v=intro-1" defer onerror="document.documentElement.classList.remove('js-loading')"></script>
 </head>
 <body>
-  <svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
-    <symbol id="pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
-    <symbol id="play" viewBox="0 0 24 24"><path d="m8 4 12 8-12 8V4Z"/></symbol>
-  </defs></svg>
+  <div class="intro-screen" id="intro-screen" role="status" aria-label="Bienvenue sur le portfolio">
+    <div class="hello-word"><img src="assets/hello.png" width="447" height="447" alt="hello" lang="en" fetchpriority="high"></div>
+    <button id="intro-enter" class="intro-enter" type="button" hidden>Entrer</button>
+  </div>
   <a class="skip-link" href="#contenu">Aller au contenu</a>
   <header class="site-header">
     <button class="menu-toggle" aria-expanded="false" aria-controls="navigation" aria-label="Ouvrir le menu"><span></span><span></span></button>
@@ -29,7 +31,7 @@
   </header>
   <main id="contenu">
     <section class="hero" id="accueil" aria-labelledby="hero-title">
-      <div class="hero-media"><video id="background-video" muted playsinline preload="auto" poster="assets/intro-poster.jpg" aria-hidden="true"><source src="assets/intro-portfolio.mp4" type="video/mp4"></video></div>
+      <div class="hero-media"><video id="background-video" muted playsinline preload="none" poster="assets/intro-poster.jpg" data-video-src="assets/intro-portfolio.mp4" aria-hidden="true"></video></div>
       <div class="hero-shade"></div>
       <div class="hero-content page-width">
         <div class="intro">
@@ -42,7 +44,11 @@
           </div>
         </div>
       </div>
-      <button id="video-toggle" class="video-toggle" aria-label="Mettre la vidéo en pause" aria-pressed="false"><svg><use href="#pause"/></svg><span>Pause vidéo</span></button>
+      <nav class="hero-socials" aria-label="Me contacter">
+        <a href="https://www.linkedin.com/in/refaiwael/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (nouvel onglet)" title="LinkedIn"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="assets/contact-icons.svg#linkedin"/></svg></a>
+        <a href="mailto:refaiwael@gmail.com" aria-label="M’envoyer un email" title="Email"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="assets/contact-icons.svg#email"/></svg></a>
+        <a href="https://wa.me/21653645173" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp (nouvel onglet)" title="WhatsApp"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="assets/contact-icons.svg#whatsapp"/></svg></a>
+      </nav>
     </section>
     <section class="about section page-width" id="a-propos" aria-labelledby="about-title">
       <h2 id="about-title">Une vision complète<br>du logiciel.</h2>
