@@ -95,9 +95,9 @@
   .brand svg { width:32px; height:32px; }
   .site-header nav { top:64px; }
   .hero { height:auto; min-height:0; display:flex; flex-direction:column; }
-  .hero-media { position:relative; inset:auto; order:0; height:auto; aspect-ratio:1600/878; margin-top:64px; width:100%; z-index:-1; overflow:hidden; background-size:100% 100%; background-position:center; }
+  .hero-media { position:relative; inset:auto; order:0; height:clamp(280px,40svh,340px); margin-top:64px; width:100%; z-index:-1; overflow:hidden; background-size:cover; background-position:56% center; }
   .hero-media::after { content:""; position:absolute; inset:auto 0 0; height:20px; background:linear-gradient(transparent,var(--paper)); pointer-events:none; }
-  .hero-media video { object-fit:contain; object-position:center; transform:none; }
+  .hero-media video { object-fit:cover; object-position:56% center; transform:none; }
   .hero-shade { display:none; }
   .hero-content { order:1; width:88%; height:auto; padding-top:14px; padding-bottom:10px; }
   .intro { width:100%; max-width:500px; }
@@ -113,7 +113,7 @@
   .hero-socials a { width:46px; height:46px; }
   .hire-bunny { left:max(8px,env(safe-area-inset-left)); bottom:max(10px,env(safe-area-inset-bottom)); width:fit-content; margin:0; }
   .hire-bunny>img { width:96px; }
-  .bunny-note { margin-top:-18px; }
+  .bunny-note { margin-top:12px; padding-block:8px; }
   .ribbon-right { display:none; }
   .ribbon-left { bottom:2%; width:65%; height:15%; opacity:.45; }
   .hello-word { width:280px; }
