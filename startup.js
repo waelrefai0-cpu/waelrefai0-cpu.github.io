@@ -16,6 +16,8 @@
   let posterOnly = false;
   let helloHidden = false;
   let pendingPlay = false;
+  let playAttempts = 0;
+  let retryTimer;
   const stamp = key => { root.dataset[key] = String(Math.round(performance.now())); };
   document.querySelectorAll('[data-enter]').forEach(element => {
     element.style.setProperty('--enter-delay', `${element.dataset.enter || 0}s`);
@@ -38,11 +40,13 @@
     stamp('contentReadyMs');
     window.clearTimeout(startDeadline);
     window.clearTimeout(contentDeadline);
+    window.clearTimeout(retryTimer);
     hideHello();
   }
   function usePoster(reason) {
     if (posterOnly) return;
     posterOnly = true;
+    window.clearTimeout(retryTimer);
     video.autoplay = false;
     video.pause();
     video.classList.add('poster-only');
@@ -54,6 +58,7 @@
     if (posterOnly || ended) { video.pause(); return; }
     if (started) return;
     started = true;
+    playAttempts = 0;
     stamp('videoStartMs');
     window.clearTimeout(startDeadline);
     window.setTimeout(hideHello, Math.max(0, 650 - (performance.now() - bootAt)));
@@ -65,10 +70,16 @@
   async function play() {
     if (pendingPlay || posterOnly || ended || motion.matches || document.hidden) return;
     pendingPlay = true;
+    playAttempts++;
     video.muted = true;
     try { await video.play(); }
     catch (error) {
-      if (!posterOnly && !document.hidden) usePoster(error.name === 'NotAllowedError' ? 'autoplay-blocked' : 'video-error');
+      root.dataset.lastPlayError = error.name;
+      if (!posterOnly && !document.hidden) {
+        if (error.name === 'NotAllowedError') usePoster('autoplay-blocked');
+        else if (video.error) usePoster('video-error');
+        else if (playAttempts < 3) retryTimer = window.setTimeout(play, 80);
+      }
     }
     finally { pendingPlay = false; }
   }
@@ -76,6 +87,7 @@
   const startDeadline = window.setTimeout(() => usePoster('video-timeout'), Math.max(0, 3200 - elapsed));
   const contentDeadline = window.setTimeout(() => usePoster('playback-stalled'), Math.max(0, 6500 - elapsed));
   video.addEventListener('playing', onPlaying);
+  video.addEventListener('canplay', () => { if (!started) play(); });
   video.addEventListener('timeupdate', () => {
     if (started && !posterOnly && video.currentTime >= 3) showContent();
   });
@@ -107,7 +119,7 @@
   if (motion.matches) {
     video.preload = 'metadata';
     window.setTimeout(() => usePoster('reduced-motion'), 250);
-  } else if (video.error || video.networkState === 3) usePoster('video-error');
+  } else if (video.error) usePoster('video-error');
   else if (!video.paused && video.readyState >= 2) onPlaying();
   else play();
 })();
