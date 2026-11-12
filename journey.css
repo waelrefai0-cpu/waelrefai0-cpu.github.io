@@ -1,0 +1,23 @@
+.journey-heading { text-align:center; margin-bottom:48px; }
+.journey-heading>p { display:flex; align-items:center; justify-content:center; gap:10px; color:var(--muted); font-size:16px; margin-bottom:18px; }
+.journey-heading>p::before { content:""; width:15px; height:2px; background:var(--blue); }
+.journey-heading h2 { font-weight:800; }
+.journey-heading em { color:var(--blue); font-weight:500; }
+.journey-grid { display:grid; grid-template-columns:1fr 1fr; gap:30px; align-items:start; }
+.journey-card { padding:32px; background:var(--paper); border:1px solid var(--line); border-radius:22px; min-width:0; }
+.journey-card-heading { display:flex; align-items:center; gap:20px; padding-bottom:26px; border-bottom:1px solid var(--line); margin-bottom:30px; }
+.journey-card-heading>span { display:grid; place-items:center; flex-shrink:0; width:64px; height:64px; border-radius:50%; background:var(--blue); color:#fff; }
+.journey-card-heading svg { width:32px; height:32px; fill:none; stroke:currentColor; stroke-width:1.8; }
+.journey-card-heading h3 { font-size:28px; font-weight:800; letter-spacing:-.03em; }
+.journey-list { display:grid; gap:30px; }
+.journey-entry { position:relative; padding-left:23px; border-left:3px solid #d5e3f3; }
+.journey-entry::before { content:""; position:absolute; top:4px; left:-5px; width:7px; height:7px; border-radius:50%; background:var(--blue); }
+.journey-entry .cv-date { color:var(--muted); font-size:14px; margin:0 0 10px; font-weight:550; }
+.journey-entry h4 { font-size:21px; line-height:1.45; font-weight:750; letter-spacing:-.02em; margin:0; }
+.journey-entry>p:not(.cv-date),.journey-entry .cv-role>p:last-child { color:var(--muted); font-size:15px; line-height:1.7; margin:8px 0 0; }
+.journey-entry ul { color:var(--muted); font-size:14px; line-height:1.8; display:grid; gap:10px; padding-left:18px; margin:17px 0 0; }
+.journey-entry li::marker { color:var(--blue); }
+.journey-cert { margin-top:5px; }
+@media(max-width:900px) { .journey-grid { gap:20px; } .journey-card { padding:25px; } .journey-card-heading { gap:14px; } .journey-card-heading h3 { font-size:24px; } .journey-card-heading>span { width:54px; height:54px; } }
+@media(max-width:700px) { .journey-grid { grid-template-columns:1fr; gap:24px; } .journey-heading { margin-bottom:32px; } .journey-heading h2 { font-size:31px; } .journey-card { padding:24px; border-radius:20px; } .journey-entry { padding-left:19px; } .journey-entry h4 { font-size:20px; } }
+@media(forced-colors:active) { .journey-card,.journey-entry { border-color:ButtonText; } }
