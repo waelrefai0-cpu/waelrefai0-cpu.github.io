@@ -53,6 +53,7 @@
   <link rel="stylesheet" href="about.css?v=portrait-1">
   <link rel="stylesheet" href="services.css?v=services-1">
   <link rel="stylesheet" href="journey.css?v=journey-1">
+  <link rel="stylesheet" href="projects.css?v=projects-1">
   <script src="app.js?v=bunny-1" defer></script>
   <script src="startup.js?v=mobile-second-one-1" defer></script>
 </head>
@@ -121,6 +122,17 @@
         </div>
       </div>
     </section>
+    <section class="projects-showcase section" id="projets" aria-labelledby="projects-title"><div class="page-width">
+      <header class="projects-heading"><p>Mon portfolio</p><h2 id="projects-title">Mes <em>projets.</em></h2></header>
+      <div class="projects-grid">
+        <article class="project-tile"><figure><div class="project-art project-art-qa" aria-hidden="true"><span class="art-eyebrow">QUALITÉ LOGICIELLE</span><strong>Web <i>&</i> API</strong><div class="art-panels"><div class="art-panel"><span class="art-window-dots">● ● ●</span><b>Playwright</b><span>Parcours web · E2E</span><div class="art-code">&lt; tests /&gt;</div></div><div class="art-panel art-panel-dark"><span class="art-window-dots">● ● ●</span><b>Postman</b><span>Validation REST</span><div class="art-code">{ API }</div></div></div></div><figcaption>Illustration du périmètre technique</figcaption></figure>
+          <ul class="project-labels" aria-label="Technologies du projet"><li>Playwright</li><li>Postman</li><li>Tests E2E</li></ul><p class="project-context">Projet QA · Mars 2026 — aujourd’hui</p><div class="project-title-row"><h3>Tests d’application web & API REST</h3><a href="#projet-qa" aria-label="Découvrir le projet de tests web et API REST"><span aria-hidden="true">↗</span></a></div><p class="project-summary">Scénarios fonctionnels, tests de régression, validation d’API et automatisation des parcours web.</p>
+        </article>
+        <article class="project-tile"><figure><div class="project-art project-art-rtc" aria-hidden="true"><span class="art-eyebrow">WEB & MOBILE</span><strong>WebRTC</strong><div class="rtc-diagram"><div class="rtc-device"><span class="rtc-speaker"></span><svg viewBox="0 0 48 48"><rect x="5" y="12" width="26" height="24" rx="5"/><path d="m31 20 12-7v22l-12-7Z"/></svg><b>Mobile</b></div><span class="rtc-connection">↔</span><div class="rtc-cloud"><svg viewBox="0 0 48 48"><path d="M12 36a9 9 0 1 1 0-18 13 13 0 0 1 25-3 11 11 0 0 1 0 21Z"/></svg><b>Firebase</b><span>Intégrations API</span></div></div></div><figcaption>Schéma de principe illustratif</figcaption></figure>
+          <ul class="project-labels" aria-label="Technologies du projet"><li>WebRTC</li><li>Firebase</li><li>API</li></ul><p class="project-context">Djagora Fablab · Stage · 2020</p><div class="project-title-row"><h3>Application mobile de télémaintenance</h3><a href="#projet-webrtc" aria-label="Découvrir le contexte du projet de télémaintenance"><span aria-hidden="true">↗</span></a></div><p class="project-summary">Application de télémaintenance mobile avec WebRTC, Firebase et intégration d’API, avec test des parcours utilisateur clés.</p>
+        </article>
+      </div>
+    </div></section>
     <section class="cv-project section" id="projet-qa" aria-labelledby="project-title"><div class="page-width">
       <div class="cv-section-heading"><div><p class="cv-kicker">Projet QA · Mars 2026 — aujourd’hui</p><h2 id="project-title">Tests d’application web<br>et d’API REST.</h2></div><p>Des exigences aux résultats de test : une approche qui associe validation manuelle et automatisation.</p></div>
       <ul class="cv-project-list"><li>Analyse des exigences et des parcours utilisateur pour identifier les conditions de test et définir les scénarios fonctionnels.</li><li>Exécution de tests fonctionnels, de régression, d’intégration et de compatibilité entre navigateurs ; consignation des cas de test et des résultats.</li><li>Validation des API REST avec Postman : méthodes HTTP, codes de réponse, données JSON et gestion des erreurs.</li><li>Création de tests E2E Playwright pour les parcours web principaux ; maintien du code et des ressources de test dans Git.</li><li>Utilisation de l’IA générative pour les idées de scénarios, les scripts, le débogage et la documentation, avec revue du contenu généré.</li></ul>
@@ -142,7 +154,7 @@
         </section>
         <section class="journey-card" aria-labelledby="work-title"><header class="journey-card-heading"><span aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="3" y="9" width="26" height="20" rx="4"/><path d="M11 9V6a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v3M3 16c7 6 19 6 26 0M14 17h4v6h-4Z"/></svg></span><h3 id="work-title">Expérience</h3></header><div class="journey-list"><article class="journey-entry"><div class="cv-role"><p class="cv-date">Sept. 2024 — Fév. 2026</p><h4>Développeur front-end freelance</h4><p>Freelance</p></div><ul><li>Développement d’interfaces web responsives et intégration d’API REST selon les besoins des clients.</li><li>Écriture de tests unitaires, investigation des anomalies fonctionnelles et d’interface, amélioration de l’utilisation sur différents navigateurs.</li></ul></article>
       <article class="journey-entry"><div class="cv-role"><p class="cv-date">Août 2023 — Août 2024</p><h4>Développeur web front-end</h4><p>Accelerant · Sousse</p></div><ul><li>Développement et maintenance d’applications React.js et TypeScript, avec Redux et intégration d’API REST.</li><li>Collaboration avec les ingénieurs QA sur l’investigation des anomalies, les tests unitaires et les corrections de compatibilité entre navigateurs.</li></ul></article>
-      <article class="journey-entry"><div class="cv-role"><p class="cv-date">Fév. 2020 — Juil. 2020</p><h4>Stagiaire développeur web & mobile</h4><p>Djagora Fablab · Sfax</p></div><ul><li>Création d’une application mobile de télémaintenance utilisant WebRTC, Firebase et des intégrations API ; test des parcours utilisateur clés.</li></ul></article></div></section>
+      <article class="journey-entry" id="projet-webrtc"><div class="cv-role"><p class="cv-date">Fév. 2020 — Juil. 2020</p><h4>Stagiaire développeur web & mobile</h4><p>Djagora Fablab · Sfax</p></div><ul><li>Création d’une application mobile de télémaintenance utilisant WebRTC, Firebase et des intégrations API ; test des parcours utilisateur clés.</li></ul></article></div></section>
       </div>
     </section>
     <section class="cv-languages section page-width" id="langues" aria-labelledby="languages-title"><div><p class="cv-kicker">Langues</p><h2 id="languages-title">Échanger avec vos équipes.</h2></div><dl><div><dt>Français</dt><dd>Courant</dd></div><div><dt>Anglais</dt><dd>Courant</dd></div></dl></section>
