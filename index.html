@@ -50,6 +50,7 @@
   <link rel="stylesheet" href="styles.css?v=reference-2">
   <link rel="stylesheet" href="hero.css?v=centered-menu-1">
   <link rel="stylesheet" href="resume.css?v=cv-1">
+  <link rel="stylesheet" href="about.css?v=portrait-1">
   <script src="app.js?v=bunny-1" defer></script>
   <script src="startup.js?v=mobile-second-one-1" defer></script>
 </head>
@@ -96,9 +97,19 @@
         <a href="https://wa.me/21653645173" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp (nouvel onglet)" title="WhatsApp"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="assets/contact-icons.svg?v=reference-2#whatsapp"/></svg></a>
       </nav>
     </section>
-    <section class="about section page-width" id="a-propos" aria-labelledby="about-title">
-      <div><p class="cv-kicker">À propos</p><h2 id="about-title">La qualité, de la conception à la validation.</h2></div>
-      <div class="about-copy"><p>Ingénieur logiciel certifié ISTQB CTFL v4.0, je me spécialise dans l’assurance qualité et l’automatisation des tests, avec une expérience professionnelle en développement front-end.</p><p>Je pratique les tests fonctionnels et de régression, la validation d’API REST avec Postman et les tests de bout en bout avec Playwright. J’utilise l’IA générative pour préparer les tests, déboguer et documenter, en vérifiant les résultats humainement.</p><p class="cv-location">Kélibia, Nabeul, Tunisie</p><nav class="cv-jump" aria-label="Explorer mon parcours"><a href="#projet-qa">Projet QA ↗</a><a href="#formation">Formation & certification ↗</a><a href="#langues">Langues ↗</a></nav></div>
+    <section class="about-showcase section" id="a-propos" aria-labelledby="about-title">
+      <div class="about-layout page-width">
+        <div class="about-visual"><div class="portrait-halo" aria-hidden="true"></div><div class="portrait-frame"><img src="assets/wael-portrait.jpg" width="768" height="1364" loading="lazy" decoding="async" alt="Portrait de Wael Refai"></div>
+          <ul class="portrait-skills" aria-label="Mes outils et domaines"><li>Playwright</li><li>Tests E2E</li><li>Postman</li><li>React.js</li><li>TypeScript</li><li>API REST</li></ul>
+        </div>
+        <div class="about-content"><p class="about-eyebrow">À propos de moi</p><h2 id="about-title">Qui est <em>Wael Refai ?</em></h2>
+          <div class="about-copy"><p>Ingénieur logiciel certifié ISTQB CTFL v4.0, spécialisé en assurance qualité et automatisation des tests, avec une expérience professionnelle en développement front-end.</p><p>Je teste les applications web et les API REST avec Playwright et Postman. L’IA générative m’aide à concevoir, déboguer et documenter les tests, toujours avec une validation humaine.</p></div>
+          <dl class="about-facts"><div><dt>CTFL v4.0</dt><dd>Certification ISTQB</dd></div><div><dt>ISIMS Sfax</dt><dd>Diplôme d’ingénieur</dd></div><div><dt>FR · EN</dt><dd>Langues courantes</dd></div></dl>
+          <p class="about-location"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>Kélibia, Nabeul, Tunisie</p>
+          <div class="about-actions"><a class="about-download" href="assets/WaelRefaiCV.pdf?v=cv-1" download="WaelRefaiCV.pdf">Télécharger mon CV <span aria-hidden="true">↗</span></a><span class="about-signature">Wael Refai</span></div>
+          <nav class="about-links" aria-label="Explorer mon parcours"><a href="#projet-qa">Mon projet QA ↗</a><a href="#formation">Mon parcours ↗</a><a href="#langues">Mes langues ↗</a></nav>
+        </div>
+      </div>
     </section>
     <section class="cv-project section" id="projet-qa" aria-labelledby="project-title"><div class="page-width">
       <div class="cv-section-heading"><div><p class="cv-kicker">Projet QA · Mars 2026 — aujourd’hui</p><h2 id="project-title">Tests d’application web<br>et d’API REST.</h2></div><p>Des exigences aux résultats de test : une approche qui associe validation manuelle et automatisation.</p></div>
