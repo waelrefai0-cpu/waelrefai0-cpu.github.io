@@ -54,6 +54,8 @@
   <link rel="stylesheet" href="services.css?v=services-1">
   <link rel="stylesheet" href="journey.css?v=journey-1">
   <link rel="stylesheet" href="projects.css?v=real-projects-2">
+  <link rel="stylesheet" href="contact.css?v=studio-1">
+  <script src="contact.js?v=studio-1" defer></script>
   <script src="app.js?v=bunny-1" defer></script>
   <script src="startup.js?v=mobile-second-one-1" defer></script>
 </head>
@@ -155,19 +157,20 @@
       </div>
     </section>
     <section class="cv-languages section page-width" id="langues" aria-labelledby="languages-title"><div><p class="cv-kicker">Langues</p><h2 id="languages-title">Échanger avec vos équipes.</h2></div><dl><div><dt>Français</dt><dd>Courant</dd></div><div><dt>Anglais</dt><dd>Courant</dd></div></dl></section>
-    <section class="contact-section section" id="contact" aria-labelledby="contact-title">
-      <div class="page-width contact-layout">
-        <div class="contact-copy">
-          <h2 id="contact-title">Parlons de votre<br>prochain projet.</h2>
-          <p>Un projet, une opportunité ou une question ?<br>Je vous invite à m’écrire.</p>
-          <a class="contact-email" href="mailto:refaiwael@gmail.com">refaiwael@gmail.com</a>
-        </div>
-        <div class="contact-options">
-          <a href="https://wa.me/21653645173" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp, +216 53 645 173 (nouvel onglet)"><span class="contact-channel">WhatsApp</span><span class="contact-value">+216 53 645 173</span><span class="contact-action">Écrire</span></a>
-          <a href="https://www.linkedin.com/in/refaiwael/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn, profil de Wael Refai (nouvel onglet)"><span class="contact-channel">LinkedIn</span><span class="contact-value">Wael Refai</span><span class="contact-action">Voir le profil</span></a>
-        </div>
-      </div>
-    </section>
+    <section class="collaborate-section" aria-labelledby="collaborate-title"><div class="page-width"><h2 id="collaborate-title">Créons ensemble<br>un <em>projet qui compte.</em></h2><a class="contact-pill" href="#contact">Parlons de votre projet <span aria-hidden="true">↗</span></a><ul class="collaborate-tags" aria-label="Domaines d’intervention"><li>Tests E2E</li><li>React.js</li><li>API REST</li><li>Playwright</li><li>Qualité logicielle</li><li>TypeScript</li><li>Postman</li><li>Front-end</li></ul></div></section>
+    <section class="contact-studio section" id="contact" aria-labelledby="contact-title"><div class="page-width contact-studio-grid"><div class="contact-studio-copy"><p class="contact-eyebrow">Me contacter</p><h2 id="contact-title">Parlons de votre<br><em>prochain projet.</em></h2><p>Une application à développer, des tests à automatiser ou une solution à fiabiliser ? Décrivez votre besoin et échangeons sur la suite.</p><ul class="contact-addresses">
+      <li><span aria-hidden="true"><svg class="contact-line-icon" viewBox="0 0 24 24"><path d="M5 3h4l2 5-3 2a16 16 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2C10 21 3 14 3 5a2 2 0 0 1 2-2Z"/></svg></span><a href="tel:+21653645173">+216 53 645 173</a></li><li><span aria-hidden="true"><svg viewBox="0 0 16 16"><use href="assets/contact-icons.svg#email"/></svg></span><a href="mailto:refaiwael@gmail.com">refaiwael@gmail.com</a></li><li><span aria-hidden="true"><svg viewBox="0 0 16 16"><use href="assets/contact-icons.svg#linkedin"/></svg></span><a href="https://www.linkedin.com/in/refaiwael/" target="_blank" rel="noopener noreferrer">LinkedIn · Wael Refai</a></li><li><span aria-hidden="true"><svg class="contact-line-icon" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span><p>Kélibia, Nabeul, Tunisie</p></li></ul><a class="contact-whatsapp" href="https://wa.me/21653645173" target="_blank" rel="noopener noreferrer">Échanger sur WhatsApp ↗</a></div>
+      <form id="project-contact-form" class="project-contact-form" novalidate><div class="contact-fields">
+        <div class="contact-field"><label for="contact-name">Votre nom *</label><input id="contact-name" name="name" autocomplete="name" required maxlength="120" placeholder="Votre nom complet" aria-describedby="contact-name-error"><span class="field-error" id="contact-name-error"></span></div>
+        <div class="contact-field"><label for="contact-email">Email *</label><input id="contact-email" name="email" type="email" autocomplete="email" required maxlength="180" placeholder="vous@exemple.com" aria-describedby="contact-email-error"><span class="field-error" id="contact-email-error"></span></div>
+        <div class="contact-field"><label for="contact-phone">Téléphone <small>(facultatif)</small></label><input id="contact-phone" name="phone" type="tel" autocomplete="tel" maxlength="50" placeholder="Votre numéro"></div>
+        <div class="contact-field"><label for="contact-service">Votre besoin *</label><select id="contact-service" name="service" required aria-describedby="contact-service-error"><option value="">Choisir un service</option>Tests & assurance qualité</option><option>Automatisation des tests</option><option>Développement front-end</option><option>Autre projet ou opportunité</option></select><span class="field-error" id="contact-service-error"></span></div>
+        <div class="contact-field"><label for="contact-budget">Budget indicatif <small>(facultatif)</small></label><input id="contact-budget" name="budget" maxlength="100" placeholder="Montant et devise, ou à discuter"></div>
+        <div class="contact-field"><label for="contact-country">Pays <small>(facultatif)</small></label><input id="contact-country" name="country" autocomplete="country-name" maxlength="100" placeholder="Votre pays"></div>
+        <div class="contact-field contact-field-wide"><label for="contact-message">Votre message *</label><textarea id="contact-message" name="message" rows="5" required maxlength="2000" placeholder="Objectif, contexte, délais souhaités…" aria-describedby="contact-message-error"></textarea><span class="field-error" id="contact-message-error"></span></div>
+      </div><p class="contact-form-note">Le formulaire prépare un brouillon dans votre messagerie. Aucun envoi automatique.</p><button class="contact-pill" type="submit">Préparer l’email <span aria-hidden="true">↗</span></button><p id="contact-form-status" class="contact-form-status" role="status"></p>
+      <div id="contact-draft" class="contact-draft" hidden><h3>Votre brouillon est prêt</h3><p>Ouvrez-le dans votre messagerie pour le relire et l’envoyer. Vous pouvez aussi copier le texte ci-dessous.</p><a id="contact-draft-link" class="contact-draft-link">Ouvrir le brouillon ↗</a><pre id="contact-draft-preview"></pre></div></form>
+    </div></section>
   </main>
       <aside class="hire-bunny" data-enter=".75" aria-label="Un petit mot du lapin">
         <img src="assets/cute-rabbit.gif?v=loop-1" width="370" height="300" alt="" decoding="async" fetchpriority="low">
@@ -176,6 +179,7 @@
           <button class="bunny-dismiss" type="button" aria-label="Masquer le lapin" title="Masquer le lapin"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4 4 8 8m0-8-8 8"/></svg></button>
         </div>
       </aside>
-  <footer class="site-footer page-width"><a class="footer-name" href="#accueil">Wael Refai</a><p>© <span id="year">2026</span> Wael Refai</p><a href="#accueil">Retour en haut</a></footer>
+  <footer class="footer-studio"><div class="footer-ribbon" aria-hidden="true"><span>Tests E2E</span><b>✳</b><span>Développement web</span><b>✳</b><span>API REST</span><b>✳</b><span>Automatisation</span></div><div class="page-width"><div class="footer-connect"><h2>Restons <em>en contact.</em></h2><a class="contact-pill" href="#contact">Discutons de votre projet <span aria-hidden="true">↗</span></a></div><div class="footer-columns"><div class="footer-intro"><a class="footer-brand" href="#accueil"><span aria-hidden="true">WR</span>Wael Refai</a><p>QA Engineer certifié ISTQB CTFL v4.0 et développeur front-end. Des applications fiables, de la conception à la validation.</p><div class="footer-socials"><a href="https://www.linkedin.com/in/refaiwael/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (nouvel onglet)"><svg viewBox="0 0 16 16"><use href="assets/contact-icons.svg#linkedin"/></svg></a><a href="mailto:refaiwael@gmail.com" aria-label="Email"><svg viewBox="0 0 16 16"><use href="assets/contact-icons.svg#email"/></svg></a><a href="https://wa.me/21653645173" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp (nouvel onglet)"><svg viewBox="0 0 16 16"><use href="assets/contact-icons.svg#whatsapp"/></svg></a></div></div>
+      <nav class="footer-nav" aria-label="Navigation de pied de page"><h3>Navigation</h3><a href="#accueil">Accueil</a><a href="#services">Services</a><a href="#a-propos">À propos</a><a href="#projets">Projets</a><a href="#experience">Parcours</a><a href="#contact">Contact</a></nav><div class="footer-info"><h3>Contact</h3><a href="tel:+21653645173">+216 53 645 173</a><a href="mailto:refaiwael@gmail.com">refaiwael@gmail.com</a><p>Kélibia, Nabeul, Tunisie</p></div><div class="footer-cv"><h3>Mon parcours en détail</h3><p>Expériences, formation et compétences dans un document.</p><a href="assets/WaelRefaiCV.pdf?v=cv-1" download="WaelRefaiCV.pdf">Télécharger mon CV <span aria-hidden="true">↓</span></a></div></div></div><div class="footer-bottom"><div class="page-width"><p>© <span id="year">2026</span> Wael Refai. Tous droits réservés.</p><a href="#accueil">Retour en haut ↑</a></div></div></footer>
 </body>
 </html>
