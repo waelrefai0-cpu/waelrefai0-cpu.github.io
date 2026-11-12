@@ -1,0 +1,18 @@
+.language-switch { display:flex; align-items:center; gap:3px; padding:4px; border:1px solid #cbdcf0; border-radius:24px; background:#fffffff0; flex-shrink:0; }
+.language-switch button { border:0; border-radius:18px; min-height:34px; min-width:38px; padding:6px 9px; background:transparent; color:var(--deep); font:750 12px/1.4 Manrope,sans-serif; cursor:pointer; }
+.language-switch button[aria-pressed="true"] { background:var(--blue); color:#fff; }
+.language-switch button:hover { box-shadow:inset 0 0 0 1px var(--blue); }
+.language-switch button:focus-visible { outline:3px solid var(--blue); outline-offset:3px; }
+.site-header>.language-switch { position:absolute; left:6%; }
+.case-nav .language-switch { order:2; }
+.case-nav>.contact-pill { order:3; }
+html[lang="en"] .intro h2 { max-width:100%; }
+@media(max-width:1180px) { .site-header>.language-switch { left:6%; } }
+@media(max-width:600px) {
+  .site-header>.language-switch { left:16px; }
+  .language-switch button { min-height:36px; min-width:36px; }
+  .case-nav { flex-wrap:wrap; }
+  .case-nav>.contact-pill { order:2; }
+  .case-nav .language-switch { order:3; margin-left:auto; }
+}
+@media(forced-colors:active) { .language-switch button[aria-pressed="true"] { border:2px solid Highlight; } }
